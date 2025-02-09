@@ -1,0 +1,22 @@
+{
+    "folders": [
+        {
+            "name": "root",
+            "path": ".",
+        },
+        {
+            "name": "Flutter App",
+            "path": "app",
+        },
+        {
+            "name": "Backend",
+            "path": "backend",
+        },
+    ],
+    "settings": {
+        "files.exclude": {
+            "app/": true,
+            "backend/": true
+        },
+    }
+}

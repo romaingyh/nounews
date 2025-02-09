@@ -1,0 +1,14 @@
+include: package:lint/strict.yaml 
+
+linter:
+  rules:
+
+analyzer:
+  plugins:
+    - custom_lint
+  errors:
+    invalid_annotation_target: ignore
+  exclude:
+    - '**.freezed.dart'
+    - '**.g.dart'
+    - '**/generated_plugin_registrant.dart'
