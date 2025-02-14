@@ -57,7 +57,7 @@ class TimelineDrawer extends ConsumerWidget {
                                         ),
                                     },
                                     const SizedBox(width: kPadding / 2),
-                                    Text(feed.title),
+                                    Flexible(child: Text(feed.title)),
                                   ],
                                 ),
                                 side: isSelected ? BorderSide.none : null,
