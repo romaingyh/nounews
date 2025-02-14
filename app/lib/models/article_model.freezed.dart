@@ -23,7 +23,7 @@ mixin _$ArticleModel {
   @JsonKey(name: 'article_id')
   int? get id => throw _privateConstructorUsedError;
   int? get feedId => throw _privateConstructorUsedError;
-  String? get feedName => throw _privateConstructorUsedError;
+  String? get feedTitle => throw _privateConstructorUsedError;
   String get referenceUrl => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
@@ -49,7 +49,7 @@ abstract class $ArticleModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'article_id') int? id,
       int? feedId,
-      String? feedName,
+      String? feedTitle,
       String referenceUrl,
       String title,
       String? description,
@@ -74,7 +74,7 @@ class _$ArticleModelCopyWithImpl<$Res, $Val extends ArticleModel>
   $Res call({
     Object? id = freezed,
     Object? feedId = freezed,
-    Object? feedName = freezed,
+    Object? feedTitle = freezed,
     Object? referenceUrl = null,
     Object? title = null,
     Object? description = freezed,
@@ -90,9 +90,9 @@ class _$ArticleModelCopyWithImpl<$Res, $Val extends ArticleModel>
           ? _value.feedId
           : feedId // ignore: cast_nullable_to_non_nullable
               as int?,
-      feedName: freezed == feedName
-          ? _value.feedName
-          : feedName // ignore: cast_nullable_to_non_nullable
+      feedTitle: freezed == feedTitle
+          ? _value.feedTitle
+          : feedTitle // ignore: cast_nullable_to_non_nullable
               as String?,
       referenceUrl: null == referenceUrl
           ? _value.referenceUrl
@@ -129,7 +129,7 @@ abstract class _$$ArticleModelImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'article_id') int? id,
       int? feedId,
-      String? feedName,
+      String? feedTitle,
       String referenceUrl,
       String title,
       String? description,
@@ -152,7 +152,7 @@ class __$$ArticleModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? feedId = freezed,
-    Object? feedName = freezed,
+    Object? feedTitle = freezed,
     Object? referenceUrl = null,
     Object? title = null,
     Object? description = freezed,
@@ -168,9 +168,9 @@ class __$$ArticleModelImplCopyWithImpl<$Res>
           ? _value.feedId
           : feedId // ignore: cast_nullable_to_non_nullable
               as int?,
-      feedName: freezed == feedName
-          ? _value.feedName
-          : feedName // ignore: cast_nullable_to_non_nullable
+      feedTitle: freezed == feedTitle
+          ? _value.feedTitle
+          : feedTitle // ignore: cast_nullable_to_non_nullable
               as String?,
       referenceUrl: null == referenceUrl
           ? _value.referenceUrl
@@ -203,7 +203,7 @@ class _$ArticleModelImpl implements _ArticleModel {
   const _$ArticleModelImpl(
       {@JsonKey(name: 'article_id') required this.id,
       required this.feedId,
-      required this.feedName,
+      required this.feedTitle,
       required this.referenceUrl,
       required this.title,
       this.description,
@@ -219,7 +219,7 @@ class _$ArticleModelImpl implements _ArticleModel {
   @override
   final int? feedId;
   @override
-  final String? feedName;
+  final String? feedTitle;
   @override
   final String referenceUrl;
   @override
@@ -233,7 +233,7 @@ class _$ArticleModelImpl implements _ArticleModel {
 
   @override
   String toString() {
-    return 'ArticleModel(id: $id, feedId: $feedId, feedName: $feedName, referenceUrl: $referenceUrl, title: $title, description: $description, thumbnailUrl: $thumbnailUrl, publishedAt: $publishedAt)';
+    return 'ArticleModel(id: $id, feedId: $feedId, feedTitle: $feedTitle, referenceUrl: $referenceUrl, title: $title, description: $description, thumbnailUrl: $thumbnailUrl, publishedAt: $publishedAt)';
   }
 
   @override
@@ -243,8 +243,8 @@ class _$ArticleModelImpl implements _ArticleModel {
             other is _$ArticleModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.feedId, feedId) || other.feedId == feedId) &&
-            (identical(other.feedName, feedName) ||
-                other.feedName == feedName) &&
+            (identical(other.feedTitle, feedTitle) ||
+                other.feedTitle == feedTitle) &&
             (identical(other.referenceUrl, referenceUrl) ||
                 other.referenceUrl == referenceUrl) &&
             (identical(other.title, title) || other.title == title) &&
@@ -258,7 +258,7 @@ class _$ArticleModelImpl implements _ArticleModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, feedId, feedName,
+  int get hashCode => Object.hash(runtimeType, id, feedId, feedTitle,
       referenceUrl, title, description, thumbnailUrl, publishedAt);
 
   /// Create a copy of ArticleModel
@@ -281,7 +281,7 @@ abstract class _ArticleModel implements ArticleModel {
   const factory _ArticleModel(
       {@JsonKey(name: 'article_id') required final int? id,
       required final int? feedId,
-      required final String? feedName,
+      required final String? feedTitle,
       required final String referenceUrl,
       required final String title,
       final String? description,
@@ -297,7 +297,7 @@ abstract class _ArticleModel implements ArticleModel {
   @override
   int? get feedId;
   @override
-  String? get feedName;
+  String? get feedTitle;
   @override
   String get referenceUrl;
   @override

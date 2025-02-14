@@ -1,3 +1,4 @@
+import 'package:duolingo_buttons/duolingo_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:nounews_app/models/article_model.dart';
@@ -24,6 +25,7 @@ class ArticleDetailsPage extends StatelessWidget {
       body: SafeArea(
         top: false,
         child: Column(
+          spacing: kPadding,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (article.thumbnailUrl != null)
@@ -36,15 +38,14 @@ class ArticleDetailsPage extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-            const SizedBox(height: kPadding),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: kPadding),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  if (article.feedName != null)
+                  if (article.feedTitle != null)
                     Text(
-                      article.feedName!,
+                      article.feedTitle!,
                     ),
                   Text(
                     switch (article.publishedAt) {
@@ -55,7 +56,6 @@ class ArticleDetailsPage extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: kPadding),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: kPadding),
               child: Text(
@@ -64,7 +64,6 @@ class ArticleDetailsPage extends StatelessWidget {
               ),
             ),
             if (article.description != null) ...[
-              const SizedBox(height: kPadding),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: kPadding),
                 child: Text(article.description!),
@@ -73,12 +72,12 @@ class ArticleDetailsPage extends StatelessWidget {
             const Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: kPadding),
-              child: FilledButton.icon(
+              child: DuoButton.icon(
                 onPressed: () {
                   launchUrlString(article.referenceUrl);
                 },
                 icon: const Icon(TablerIcons.book),
-                label: const Text('Open article'),
+                label: const Text('Open full article'),
               ),
             ),
           ],

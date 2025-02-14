@@ -8,7 +8,8 @@ part 'feed_preview_model.g.dart';
 class FeedPreviewModel with _$FeedPreviewModel {
   @JsonSerializable(fieldRename: FieldRename.snake)
   factory FeedPreviewModel({
-    required String? feedTitle,
+    required String feedTitle,
+    required String feedUrl,
     required List<ArticleModel> articles,
   }) = _FeedPreviewModel;
 

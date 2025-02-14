@@ -24,8 +24,8 @@ mixin _$FeedModel {
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'feed_url')
   String get url => throw _privateConstructorUsedError;
-  @JsonKey(name: 'feed_name')
-  String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'feed_title')
+  String get title => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_fetched')
   DateTime? get lastFetched => throw _privateConstructorUsedError;
 
@@ -47,7 +47,7 @@ abstract class $FeedModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'feed_id') int id,
       @JsonKey(name: 'feed_url') String url,
-      @JsonKey(name: 'feed_name') String name,
+      @JsonKey(name: 'feed_title') String title,
       @JsonKey(name: 'last_fetched') DateTime? lastFetched});
 }
 
@@ -68,7 +68,7 @@ class _$FeedModelCopyWithImpl<$Res, $Val extends FeedModel>
   $Res call({
     Object? id = null,
     Object? url = null,
-    Object? name = null,
+    Object? title = null,
     Object? lastFetched = freezed,
   }) {
     return _then(_value.copyWith(
@@ -80,9 +80,9 @@ class _$FeedModelCopyWithImpl<$Res, $Val extends FeedModel>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
       lastFetched: freezed == lastFetched
           ? _value.lastFetched
@@ -103,7 +103,7 @@ abstract class _$$FeedModelImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'feed_id') int id,
       @JsonKey(name: 'feed_url') String url,
-      @JsonKey(name: 'feed_name') String name,
+      @JsonKey(name: 'feed_title') String title,
       @JsonKey(name: 'last_fetched') DateTime? lastFetched});
 }
 
@@ -122,7 +122,7 @@ class __$$FeedModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? url = null,
-    Object? name = null,
+    Object? title = null,
     Object? lastFetched = freezed,
   }) {
     return _then(_$FeedModelImpl(
@@ -134,9 +134,9 @@ class __$$FeedModelImplCopyWithImpl<$Res>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
       lastFetched: freezed == lastFetched
           ? _value.lastFetched
@@ -152,7 +152,7 @@ class _$FeedModelImpl implements _FeedModel {
   const _$FeedModelImpl(
       {@JsonKey(name: 'feed_id') required this.id,
       @JsonKey(name: 'feed_url') required this.url,
-      @JsonKey(name: 'feed_name') required this.name,
+      @JsonKey(name: 'feed_title') required this.title,
       @JsonKey(name: 'last_fetched') required this.lastFetched});
 
   factory _$FeedModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -165,15 +165,15 @@ class _$FeedModelImpl implements _FeedModel {
   @JsonKey(name: 'feed_url')
   final String url;
   @override
-  @JsonKey(name: 'feed_name')
-  final String name;
+  @JsonKey(name: 'feed_title')
+  final String title;
   @override
   @JsonKey(name: 'last_fetched')
   final DateTime? lastFetched;
 
   @override
   String toString() {
-    return 'FeedModel(id: $id, url: $url, name: $name, lastFetched: $lastFetched)';
+    return 'FeedModel(id: $id, url: $url, title: $title, lastFetched: $lastFetched)';
   }
 
   @override
@@ -183,14 +183,14 @@ class _$FeedModelImpl implements _FeedModel {
             other is _$FeedModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.url, url) || other.url == url) &&
-            (identical(other.name, name) || other.name == name) &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.lastFetched, lastFetched) ||
                 other.lastFetched == lastFetched));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, url, name, lastFetched);
+  int get hashCode => Object.hash(runtimeType, id, url, title, lastFetched);
 
   /// Create a copy of FeedModel
   /// with the given fields replaced by the non-null parameter values.
@@ -212,7 +212,7 @@ abstract class _FeedModel implements FeedModel {
   const factory _FeedModel(
       {@JsonKey(name: 'feed_id') required final int id,
       @JsonKey(name: 'feed_url') required final String url,
-      @JsonKey(name: 'feed_name') required final String name,
+      @JsonKey(name: 'feed_title') required final String title,
       @JsonKey(name: 'last_fetched')
       required final DateTime? lastFetched}) = _$FeedModelImpl;
 
@@ -226,8 +226,8 @@ abstract class _FeedModel implements FeedModel {
   @JsonKey(name: 'feed_url')
   String get url;
   @override
-  @JsonKey(name: 'feed_name')
-  String get name;
+  @JsonKey(name: 'feed_title')
+  String get title;
   @override
   @JsonKey(name: 'last_fetched')
   DateTime? get lastFetched;

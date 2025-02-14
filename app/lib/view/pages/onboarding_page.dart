@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nounews_app/providers/timeline_providers.dart';
+import 'package:nounews_app/providers/user_feeds_provider.dart';
 import 'package:nounews_app/res/extensions/context_extension.dart';
 import 'package:nounews_app/res/theme/constants.dart';
 import 'package:nounews_app/view/pages/feeds_selection_page.dart';
@@ -23,10 +23,10 @@ class OnboardingPage extends ConsumerWidget {
               error: asyncErrorWidgetBuilder,
               data: (feeds) {
                 if (feeds.isEmpty) {
-                  return const FeedsSelectionPage();
+                  return const FeedsSelectionPage(isOnboarding: true);
                 }
 
-                return TimelinePage(feeds: feeds);
+                return const TimelinePage();
               },
             ),
       ),

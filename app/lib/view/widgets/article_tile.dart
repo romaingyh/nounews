@@ -54,8 +54,8 @@ class ArticleTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                if (article.feedName != null) ...[
-                  FeedChip(feedName: article.feedName!),
+                if (article.feedTitle != null) ...[
+                  FeedChip(feedName: article.feedTitle!),
                 ],
                 const SizedBox(height: kPadding / 2),
                 Expanded(

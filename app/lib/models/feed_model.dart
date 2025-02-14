@@ -8,7 +8,7 @@ class FeedModel with _$FeedModel {
   const factory FeedModel({
     @JsonKey(name: 'feed_id') required int id,
     @JsonKey(name: 'feed_url') required String url,
-    @JsonKey(name: 'feed_name') required String name,
+    @JsonKey(name: 'feed_title') required String title,
     @JsonKey(name: 'last_fetched') required DateTime? lastFetched,
   }) = _FeedModel;
 

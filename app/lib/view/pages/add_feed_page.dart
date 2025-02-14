@@ -23,15 +23,20 @@ class AddFeedPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Add a new feed")),
-      body: Navigator(
-        initialRoute: _AddFeedRoutes.creationForm,
-        onGenerateRoute: (settings) => MaterialPageRoute(
-          builder: (context) => switch (settings.name) {
-            _AddFeedRoutes.creationForm => const _FeedCreationForm(),
-            _AddFeedRoutes.preview => const FeedPreviewPage(),
-            _ => const SizedBox.shrink(),
+      body: SafeArea(
+        child: Navigator(
+          initialRoute: _AddFeedRoutes.creationForm,
+          onGenerateRoute: (settings) => switch (settings.name) {
+            _AddFeedRoutes.creationForm => MaterialPageRoute(
+                builder: (context) => const _FeedCreationForm(),
+                settings: settings,
+              ),
+            _AddFeedRoutes.preview => MaterialPageRoute<int?>(
+                builder: (context) => const FeedPreviewPage(),
+                settings: settings,
+              ),
+            _ => null
           },
-          settings: settings,
         ),
       ),
     );
@@ -67,7 +72,7 @@ class __FeedCreationFormPageState extends ConsumerState<_FeedCreationForm> {
 
     try {
       final response = await Supabase.instance.client.functions.invoke(
-        'fetch_articles',
+        'preview_feed',
         body: {
           'url': uri.toString(),
         },

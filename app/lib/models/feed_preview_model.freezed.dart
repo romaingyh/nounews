@@ -20,7 +20,8 @@ FeedPreviewModel _$FeedPreviewModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FeedPreviewModel {
-  String? get feedTitle => throw _privateConstructorUsedError;
+  String get feedTitle => throw _privateConstructorUsedError;
+  String get feedUrl => throw _privateConstructorUsedError;
   List<ArticleModel> get articles => throw _privateConstructorUsedError;
 
   /// Serializes this FeedPreviewModel to a JSON map.
@@ -39,7 +40,7 @@ abstract class $FeedPreviewModelCopyWith<$Res> {
           FeedPreviewModel value, $Res Function(FeedPreviewModel) then) =
       _$FeedPreviewModelCopyWithImpl<$Res, FeedPreviewModel>;
   @useResult
-  $Res call({String? feedTitle, List<ArticleModel> articles});
+  $Res call({String feedTitle, String feedUrl, List<ArticleModel> articles});
 }
 
 /// @nodoc
@@ -57,14 +58,19 @@ class _$FeedPreviewModelCopyWithImpl<$Res, $Val extends FeedPreviewModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? feedTitle = freezed,
+    Object? feedTitle = null,
+    Object? feedUrl = null,
     Object? articles = null,
   }) {
     return _then(_value.copyWith(
-      feedTitle: freezed == feedTitle
+      feedTitle: null == feedTitle
           ? _value.feedTitle
           : feedTitle // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      feedUrl: null == feedUrl
+          ? _value.feedUrl
+          : feedUrl // ignore: cast_nullable_to_non_nullable
+              as String,
       articles: null == articles
           ? _value.articles
           : articles // ignore: cast_nullable_to_non_nullable
@@ -81,7 +87,7 @@ abstract class _$$FeedPreviewModelImplCopyWith<$Res>
       __$$FeedPreviewModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? feedTitle, List<ArticleModel> articles});
+  $Res call({String feedTitle, String feedUrl, List<ArticleModel> articles});
 }
 
 /// @nodoc
@@ -97,14 +103,19 @@ class __$$FeedPreviewModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? feedTitle = freezed,
+    Object? feedTitle = null,
+    Object? feedUrl = null,
     Object? articles = null,
   }) {
     return _then(_$FeedPreviewModelImpl(
-      feedTitle: freezed == feedTitle
+      feedTitle: null == feedTitle
           ? _value.feedTitle
           : feedTitle // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      feedUrl: null == feedUrl
+          ? _value.feedUrl
+          : feedUrl // ignore: cast_nullable_to_non_nullable
+              as String,
       articles: null == articles
           ? _value._articles
           : articles // ignore: cast_nullable_to_non_nullable
@@ -118,14 +129,18 @@ class __$$FeedPreviewModelImplCopyWithImpl<$Res>
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _$FeedPreviewModelImpl implements _FeedPreviewModel {
   _$FeedPreviewModelImpl(
-      {required this.feedTitle, required final List<ArticleModel> articles})
+      {required this.feedTitle,
+      required this.feedUrl,
+      required final List<ArticleModel> articles})
       : _articles = articles;
 
   factory _$FeedPreviewModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$FeedPreviewModelImplFromJson(json);
 
   @override
-  final String? feedTitle;
+  final String feedTitle;
+  @override
+  final String feedUrl;
   final List<ArticleModel> _articles;
   @override
   List<ArticleModel> get articles {
@@ -136,7 +151,7 @@ class _$FeedPreviewModelImpl implements _FeedPreviewModel {
 
   @override
   String toString() {
-    return 'FeedPreviewModel(feedTitle: $feedTitle, articles: $articles)';
+    return 'FeedPreviewModel(feedTitle: $feedTitle, feedUrl: $feedUrl, articles: $articles)';
   }
 
   @override
@@ -146,13 +161,14 @@ class _$FeedPreviewModelImpl implements _FeedPreviewModel {
             other is _$FeedPreviewModelImpl &&
             (identical(other.feedTitle, feedTitle) ||
                 other.feedTitle == feedTitle) &&
+            (identical(other.feedUrl, feedUrl) || other.feedUrl == feedUrl) &&
             const DeepCollectionEquality().equals(other._articles, _articles));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, feedTitle, const DeepCollectionEquality().hash(_articles));
+  int get hashCode => Object.hash(runtimeType, feedTitle, feedUrl,
+      const DeepCollectionEquality().hash(_articles));
 
   /// Create a copy of FeedPreviewModel
   /// with the given fields replaced by the non-null parameter values.
@@ -173,14 +189,17 @@ class _$FeedPreviewModelImpl implements _FeedPreviewModel {
 
 abstract class _FeedPreviewModel implements FeedPreviewModel {
   factory _FeedPreviewModel(
-      {required final String? feedTitle,
+      {required final String feedTitle,
+      required final String feedUrl,
       required final List<ArticleModel> articles}) = _$FeedPreviewModelImpl;
 
   factory _FeedPreviewModel.fromJson(Map<String, dynamic> json) =
       _$FeedPreviewModelImpl.fromJson;
 
   @override
-  String? get feedTitle;
+  String get feedTitle;
+  @override
+  String get feedUrl;
   @override
   List<ArticleModel> get articles;
 

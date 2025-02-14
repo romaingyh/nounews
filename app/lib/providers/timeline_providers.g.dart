@@ -6,7 +6,7 @@ part of 'timeline_providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$feedsArticlesHash() => r'7ba0ed71e7f176987e5a33518942506a4e0ac78c';
+String _$timelineArticlesHash() => r'382532b110b4d1e8a0309af37cacaaf40b639a4d';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,30 +29,30 @@ class _SystemHash {
   }
 }
 
-/// See also [feedsArticles].
-@ProviderFor(feedsArticles)
-const feedsArticlesProvider = FeedsArticlesFamily();
+/// See also [timelineArticles].
+@ProviderFor(timelineArticles)
+const timelineArticlesProvider = TimelineArticlesFamily();
 
-/// See also [feedsArticles].
-class FeedsArticlesFamily extends Family<AsyncValue<List<ArticleModel>>> {
-  /// See also [feedsArticles].
-  const FeedsArticlesFamily();
+/// See also [timelineArticles].
+class TimelineArticlesFamily extends Family<AsyncValue<List<ArticleModel>>> {
+  /// See also [timelineArticles].
+  const TimelineArticlesFamily();
 
-  /// See also [feedsArticles].
-  FeedsArticlesProvider call(
-    EquatableListWrapper<FeedModel> feeds,
-  ) {
-    return FeedsArticlesProvider(
-      feeds,
+  /// See also [timelineArticles].
+  TimelineArticlesProvider call({
+    String? searchQuery,
+  }) {
+    return TimelineArticlesProvider(
+      searchQuery: searchQuery,
     );
   }
 
   @override
-  FeedsArticlesProvider getProviderOverride(
-    covariant FeedsArticlesProvider provider,
+  TimelineArticlesProvider getProviderOverride(
+    covariant TimelineArticlesProvider provider,
   ) {
     return call(
-      provider.feeds,
+      searchQuery: provider.searchQuery,
     );
   }
 
@@ -68,76 +68,77 @@ class FeedsArticlesFamily extends Family<AsyncValue<List<ArticleModel>>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'feedsArticlesProvider';
+  String? get name => r'timelineArticlesProvider';
 }
 
-/// See also [feedsArticles].
-class FeedsArticlesProvider
+/// See also [timelineArticles].
+class TimelineArticlesProvider
     extends AutoDisposeFutureProvider<List<ArticleModel>> {
-  /// See also [feedsArticles].
-  FeedsArticlesProvider(
-    EquatableListWrapper<FeedModel> feeds,
-  ) : this._internal(
-          (ref) => feedsArticles(
-            ref as FeedsArticlesRef,
-            feeds,
+  /// See also [timelineArticles].
+  TimelineArticlesProvider({
+    String? searchQuery,
+  }) : this._internal(
+          (ref) => timelineArticles(
+            ref as TimelineArticlesRef,
+            searchQuery: searchQuery,
           ),
-          from: feedsArticlesProvider,
-          name: r'feedsArticlesProvider',
+          from: timelineArticlesProvider,
+          name: r'timelineArticlesProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$feedsArticlesHash,
-          dependencies: FeedsArticlesFamily._dependencies,
+                  : _$timelineArticlesHash,
+          dependencies: TimelineArticlesFamily._dependencies,
           allTransitiveDependencies:
-              FeedsArticlesFamily._allTransitiveDependencies,
-          feeds: feeds,
+              TimelineArticlesFamily._allTransitiveDependencies,
+          searchQuery: searchQuery,
         );
 
-  FeedsArticlesProvider._internal(
+  TimelineArticlesProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
     required super.allTransitiveDependencies,
     required super.debugGetCreateSourceHash,
     required super.from,
-    required this.feeds,
+    required this.searchQuery,
   }) : super.internal();
 
-  final EquatableListWrapper<FeedModel> feeds;
+  final String? searchQuery;
 
   @override
   Override overrideWith(
-    FutureOr<List<ArticleModel>> Function(FeedsArticlesRef provider) create,
+    FutureOr<List<ArticleModel>> Function(TimelineArticlesRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: FeedsArticlesProvider._internal(
-        (ref) => create(ref as FeedsArticlesRef),
+      override: TimelineArticlesProvider._internal(
+        (ref) => create(ref as TimelineArticlesRef),
         from: from,
         name: null,
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
-        feeds: feeds,
+        searchQuery: searchQuery,
       ),
     );
   }
 
   @override
   AutoDisposeFutureProviderElement<List<ArticleModel>> createElement() {
-    return _FeedsArticlesProviderElement(this);
+    return _TimelineArticlesProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is FeedsArticlesProvider && other.feeds == feeds;
+    return other is TimelineArticlesProvider &&
+        other.searchQuery == searchQuery;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, feeds.hashCode);
+    hash = _SystemHash.combine(hash, searchQuery.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -145,47 +146,46 @@ class FeedsArticlesProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin FeedsArticlesRef on AutoDisposeFutureProviderRef<List<ArticleModel>> {
-  /// The parameter `feeds` of this provider.
-  EquatableListWrapper<FeedModel> get feeds;
+mixin TimelineArticlesRef on AutoDisposeFutureProviderRef<List<ArticleModel>> {
+  /// The parameter `searchQuery` of this provider.
+  String? get searchQuery;
 }
 
-class _FeedsArticlesProviderElement
+class _TimelineArticlesProviderElement
     extends AutoDisposeFutureProviderElement<List<ArticleModel>>
-    with FeedsArticlesRef {
-  _FeedsArticlesProviderElement(super.provider);
+    with TimelineArticlesRef {
+  _TimelineArticlesProviderElement(super.provider);
 
   @override
-  EquatableListWrapper<FeedModel> get feeds =>
-      (origin as FeedsArticlesProvider).feeds;
+  String? get searchQuery => (origin as TimelineArticlesProvider).searchQuery;
 }
 
-String _$feedsHash() => r'8d2c781fe0f370b2865d8d3e8c16c17187c2ae3a';
+String _$isFeedHiddenHash() => r'b7133c80616f3e8baef1d883d0f2304466a31c16';
 
-/// See also [feeds].
-@ProviderFor(feeds)
-const feedsProvider = FeedsFamily();
+/// See also [isFeedHidden].
+@ProviderFor(isFeedHidden)
+const isFeedHiddenProvider = IsFeedHiddenFamily();
 
-/// See also [feeds].
-class FeedsFamily extends Family<AsyncValue<List<FeedModel>>> {
-  /// See also [feeds].
-  const FeedsFamily();
+/// See also [isFeedHidden].
+class IsFeedHiddenFamily extends Family<bool> {
+  /// See also [isFeedHidden].
+  const IsFeedHiddenFamily();
 
-  /// See also [feeds].
-  FeedsProvider call({
-    String? query,
-  }) {
-    return FeedsProvider(
-      query: query,
+  /// See also [isFeedHidden].
+  IsFeedHiddenProvider call(
+    FeedModel feed,
+  ) {
+    return IsFeedHiddenProvider(
+      feed,
     );
   }
 
   @override
-  FeedsProvider getProviderOverride(
-    covariant FeedsProvider provider,
+  IsFeedHiddenProvider getProviderOverride(
+    covariant IsFeedHiddenProvider provider,
   ) {
     return call(
-      query: provider.query,
+      provider.feed,
     );
   }
 
@@ -201,74 +201,75 @@ class FeedsFamily extends Family<AsyncValue<List<FeedModel>>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'feedsProvider';
+  String? get name => r'isFeedHiddenProvider';
 }
 
-/// See also [feeds].
-class FeedsProvider extends AutoDisposeFutureProvider<List<FeedModel>> {
-  /// See also [feeds].
-  FeedsProvider({
-    String? query,
-  }) : this._internal(
-          (ref) => feeds(
-            ref as FeedsRef,
-            query: query,
+/// See also [isFeedHidden].
+class IsFeedHiddenProvider extends AutoDisposeProvider<bool> {
+  /// See also [isFeedHidden].
+  IsFeedHiddenProvider(
+    FeedModel feed,
+  ) : this._internal(
+          (ref) => isFeedHidden(
+            ref as IsFeedHiddenRef,
+            feed,
           ),
-          from: feedsProvider,
-          name: r'feedsProvider',
+          from: isFeedHiddenProvider,
+          name: r'isFeedHiddenProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$feedsHash,
-          dependencies: FeedsFamily._dependencies,
-          allTransitiveDependencies: FeedsFamily._allTransitiveDependencies,
-          query: query,
+                  : _$isFeedHiddenHash,
+          dependencies: IsFeedHiddenFamily._dependencies,
+          allTransitiveDependencies:
+              IsFeedHiddenFamily._allTransitiveDependencies,
+          feed: feed,
         );
 
-  FeedsProvider._internal(
+  IsFeedHiddenProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
     required super.allTransitiveDependencies,
     required super.debugGetCreateSourceHash,
     required super.from,
-    required this.query,
+    required this.feed,
   }) : super.internal();
 
-  final String? query;
+  final FeedModel feed;
 
   @override
   Override overrideWith(
-    FutureOr<List<FeedModel>> Function(FeedsRef provider) create,
+    bool Function(IsFeedHiddenRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: FeedsProvider._internal(
-        (ref) => create(ref as FeedsRef),
+      override: IsFeedHiddenProvider._internal(
+        (ref) => create(ref as IsFeedHiddenRef),
         from: from,
         name: null,
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
-        query: query,
+        feed: feed,
       ),
     );
   }
 
   @override
-  AutoDisposeFutureProviderElement<List<FeedModel>> createElement() {
-    return _FeedsProviderElement(this);
+  AutoDisposeProviderElement<bool> createElement() {
+    return _IsFeedHiddenProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is FeedsProvider && other.query == query;
+    return other is IsFeedHiddenProvider && other.feed == feed;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, query.hashCode);
+    hash = _SystemHash.combine(hash, feed.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -276,33 +277,35 @@ class FeedsProvider extends AutoDisposeFutureProvider<List<FeedModel>> {
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin FeedsRef on AutoDisposeFutureProviderRef<List<FeedModel>> {
-  /// The parameter `query` of this provider.
-  String? get query;
+mixin IsFeedHiddenRef on AutoDisposeProviderRef<bool> {
+  /// The parameter `feed` of this provider.
+  FeedModel get feed;
 }
 
-class _FeedsProviderElement
-    extends AutoDisposeFutureProviderElement<List<FeedModel>> with FeedsRef {
-  _FeedsProviderElement(super.provider);
+class _IsFeedHiddenProviderElement extends AutoDisposeProviderElement<bool>
+    with IsFeedHiddenRef {
+  _IsFeedHiddenProviderElement(super.provider);
 
   @override
-  String? get query => (origin as FeedsProvider).query;
+  FeedModel get feed => (origin as IsFeedHiddenProvider).feed;
 }
 
-String _$userFeedsHash() => r'b050b3c8196e19aaeb4a65ca2167acf59264346b';
+String _$timelineHiddenFeedsHash() =>
+    r'bff1898ee9689b62d1cccf5b57378398bc6e1ed2';
 
-/// See also [UserFeeds].
-@ProviderFor(UserFeeds)
-final userFeedsProvider =
-    AutoDisposeAsyncNotifierProvider<UserFeeds, List<FeedModel>>.internal(
-  UserFeeds.new,
-  name: r'userFeedsProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$userFeedsHash,
+/// See also [TimelineHiddenFeeds].
+@ProviderFor(TimelineHiddenFeeds)
+final timelineHiddenFeedsProvider =
+    AutoDisposeNotifierProvider<TimelineHiddenFeeds, List<int>>.internal(
+  TimelineHiddenFeeds.new,
+  name: r'timelineHiddenFeedsProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$timelineHiddenFeedsHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$UserFeeds = AutoDisposeAsyncNotifier<List<FeedModel>>;
+typedef _$TimelineHiddenFeeds = AutoDisposeNotifier<List<int>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

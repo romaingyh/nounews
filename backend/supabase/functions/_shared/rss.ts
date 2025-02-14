@@ -12,7 +12,6 @@ export async function fetchRss(url: string): Promise<Feed> {
         const response = await fetch(url);
 
         const text = await response.text();
-        console.log(text);
 
         try {
             const feed = await parseFeed(text);
@@ -61,6 +60,7 @@ async function createRssFromHtml(
         "Don't stop in the middle, find all possible articles." +
         "Don't forget images, add them in the xml as media:content tag." +
         "If some medias use relative paths, convert them to absolute including protocol." +
+        "When you extract title, keep only relevant part. For example: 'The New York Times - News' should be 'The New York Times'." +
         "Your xml response will be directly used so answer only xml.";
 
     const apiKey = Deno.env.get("GEMINI_API_KEY");
@@ -76,8 +76,6 @@ async function createRssFromHtml(
     });
 
     const result = await model.generateContent(html);
-
-    console.log(result.response.text());
 
     try {
         const feed = await parseFeed(result.response.text());
@@ -112,11 +110,18 @@ export function createArticlesFromRssFeed(feed: Feed): Article[] {
 
         let thumbnailUrl = undefined;
 
-        // first try to load thumbnail from media:content
+        // try to load thumbnail from media:content
         const mediaContent = item["media:content"];
-        thumbnailUrl = mediaContent?.find(
-            (content) => content.type === "image" || content.medium === "image",
-        )?.url;
+        if (mediaContent) {
+            thumbnailUrl = mediaContent?.find(
+                (content) =>
+                    content.type === "image" || content.medium === "image",
+            )?.url;
+
+            if (!thumbnailUrl) {
+                thumbnailUrl = mediaContent[0].url;
+            }
+        }
 
         // if not found, try to load thumbnail from content:encoded img html tag
         if (!thumbnailUrl) {

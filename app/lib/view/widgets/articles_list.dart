@@ -31,7 +31,7 @@ class ArticlesList extends StatelessWidget {
         final article = articles[index];
 
         return EntryAnimatedWidget(
-          begin: 0.5,
+          type: AnimationType.fade,
           duration: kSlowAnimationDuration,
           child: InkWell(
             onTap: () {

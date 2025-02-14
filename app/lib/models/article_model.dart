@@ -9,7 +9,7 @@ class ArticleModel with _$ArticleModel {
   const factory ArticleModel({
     @JsonKey(name: 'article_id') required int? id,
     required int? feedId,
-    required String? feedName,
+    required String? feedTitle,
     required String referenceUrl,
     required String title,
     String? description,

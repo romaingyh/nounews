@@ -10,7 +10,7 @@ _$ArticleModelImpl _$$ArticleModelImplFromJson(Map<String, dynamic> json) =>
     _$ArticleModelImpl(
       id: (json['article_id'] as num?)?.toInt(),
       feedId: (json['feed_id'] as num?)?.toInt(),
-      feedName: json['feed_name'] as String?,
+      feedTitle: json['feed_title'] as String?,
       referenceUrl: json['reference_url'] as String,
       title: json['title'] as String,
       description: json['description'] as String?,
@@ -24,7 +24,7 @@ Map<String, dynamic> _$$ArticleModelImplToJson(_$ArticleModelImpl instance) =>
     <String, dynamic>{
       'article_id': instance.id,
       'feed_id': instance.feedId,
-      'feed_name': instance.feedName,
+      'feed_title': instance.feedTitle,
       'reference_url': instance.referenceUrl,
       'title': instance.title,
       'description': instance.description,
