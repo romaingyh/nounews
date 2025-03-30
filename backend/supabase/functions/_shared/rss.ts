@@ -52,7 +52,7 @@ export async function fetchRss(url: string): Promise<Feed> {
  */
 async function createRssFromHtml(
     html: string,
-    modelName: GeminiModelName = "gemini-2.0-flash-lite-preview-02-05",
+    modelName: GeminiModelName = "gemini-2.0-flash-lite",
 ): Promise<Feed> {
     const systemPrompt =
         "I'll give you html code from a website news page. You must identify articles and export them to RSS xml formt." +
